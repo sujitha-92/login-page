@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Login Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="login-card" aria-labelledby="page-title">
+      <a class="brand" href="/" aria-label="Nana Millets home">
+        <span class="brand-mark" aria-hidden="true">@</span>
+        <span>Login Page</span>
+      </a>
+
+      <div class="intro">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1 id="page-title">Sign in to your account</h1>
+        <p class="subtitle">Good Food, Good Life.</p>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="notice {{ category }}" role="status">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="post" action="{{ url_for('login') }}">
+        <label for="email">Email address or username</label>
+        <input id="email" name="email" type="text" placeholder="you@example.com" autocomplete="username" required>
+
+        <div class="password-heading">
+          <label for="password">Password</label>
+          <a class="text-link" href="{{ url_for('forgot_password') }}">Forgot password?</a>
+        </div>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+          <button class="show-password" type="button" id="togglePassword" aria-controls="password" aria-pressed="false">Show</button>
+        </div>
+
+        <label class="remember-row">
+          <input type="checkbox" name="remember" id="remember">
+          <span>Remember me</span>
+        </label>
+
+        <button class="submit-button" type="submit">Sign in <span aria-hidden="true">→</span></button>
+      </form>
+
+      <p class="signup-prompt">New to our Page? <a class="text-link" href="{{ url_for('signup') }}">Create an account</a></p>
+      <p class="footer-note">Wholesome choices, made simple.</p>
+    </section>
+  </main>
+  <script>
+    const passwordInput = document.getElementById('password');
+    const toggleButton = document.getElementById('togglePassword');
+    toggleButton.addEventListener('click', () => {
+      const showing = passwordInput.type === 'password';
+      passwordInput.type = showing ? 'text' : 'password';
+      toggleButton.textContent = showing ? 'Hide' : 'Show';
+      toggleButton.setAttribute('aria-pressed', String(showing));
+    });
+  </script>
+</body>
+</html>

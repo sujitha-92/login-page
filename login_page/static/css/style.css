@@ -1,0 +1,136 @@
+:root {
+  --green: #ddd05b;
+  --green-dark: #5e5b30;
+  --green-soft: #edf4e9;
+  --ink: #202820;
+  --muted: #70796f;
+  --border: #dfe6dc;
+  --surface: #ffffff;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 10%, #f3f7e9 0, transparent 35%),
+              linear-gradient(135deg, #f8faf5, #eef3e9);
+}
+.page-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+}
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background: var(--surface);
+  border: 1px solid rgba(56, 102, 65, .12);
+  border-radius: 22px;
+  padding: 38px 40px 30px;
+  box-shadow: 0 22px 65px rgba(34, 55, 32, .09);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green-dark);
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: -.5px;
+}
+.brand strong { font-weight: 800; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: #fff;
+  background: var(--green);
+  border-radius: 12px 12px 12px 4px;
+  font-weight: 800;
+}
+.intro { margin: 34px 0 27px; }
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+h1 { margin: 0; font-size: clamp(25px, 5vw, 30px); line-height: 1.2; letter-spacing: -1px; }
+.subtitle { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+form { display: flex; flex-direction: column; }
+label { margin-bottom: 9px; font-size: 13px; font-weight: 650; }
+input[type="text"], input[type="password"], input[type="email"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color .15s, box-shadow .15s;
+}
+input::placeholder { color: #a2aaa0; }
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(56, 102, 65, .12);
+}
+.field-label { margin-top: 18px; }
+.signup-submit { margin-top: 25px; }
+.password-heading { display: flex; align-items: center; justify-content: space-between; margin-top: 21px; }
+.password-heading label { margin-bottom: 9px; }
+.text-link { color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; }
+.text-link:hover { text-decoration: underline; }
+.password-wrap { position: relative; }
+.password-wrap input { padding-right: 65px; }
+.show-password {
+  position: absolute;
+  top: 50%; right: 12px;
+  transform: translateY(-50%);
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.remember-row { display: flex; align-items: center; gap: 9px; margin: 19px 0 23px; color: #596258; font-weight: 500; cursor: pointer; }
+.remember-row input { width: 15px; height: 15px; margin: 0; accent-color: var(--green); }
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 49px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green);
+  color: black;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+.submit-button:hover { background: var(--green-dark); }
+.submit-button:active { transform: translateY(1px); }
+.signup-prompt { margin: 24px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
+.signup-prompt .text-link { font-size: 13px; }
+.footer-note { margin: 28px 0 0; padding-top: 18px; border-top: 1px solid #edf0eb; text-align: center; color: #8b9589; font-size: 11px; }
+.notice { margin: -9px 0 20px; padding: 11px 12px; border-radius: 9px; font-size: 13px; }
+.notice.error { background: #fff0ed; color: #a43625; }
+.notice.info { background: var(--green-soft); color: var(--green-dark); }
+@media (max-width: 480px) {
+  .login-card { padding: 30px 23px 25px; border-radius: 18px; }
+  .intro { margin-top: 28px; }
+}
